@@ -1,12 +1,15 @@
 # dockerfile-postsgresql-plperl
 
-[![ImageLayers Size][1]][2]
-[![GitHub license][3]][4]
+[![Docker Image][1]][2]
+[![Version][3]][4]
+[![GitHub license][5]][6]
 
-[1]: https://img.shields.io/imagelayers/image-size/dopos/postgresql/latest.svg
-[2]: https://store.docker.com/community/images/dopos/postgresql
-[3]: https://img.shields.io/badge/license-MIT-blue.svg
-[4]: LICENSE
+[1]: https://images.microbadger.com/badges/image/dopos/postgresql.svg
+[2]: https://microbadger.com/images/dopos/postgresql "Get your own image badge on microbadger.com"
+[3]: https://images.microbadger.com/badges/version/dopos/postgresql.svg
+[4]: https://microbadger.com/images/dopos/postgresql "Get your own version badge on microbadger.com"
+[5]: https://img.shields.io/badge/license-MIT-blue.svg
+[6]: LICENSE
 
 Alpine 3.6 + Postgresql 9.6 packages (including plperl)
 
