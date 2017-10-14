@@ -145,5 +145,6 @@ if [ "$1" = 'postgres' ]; then
 	fi
 fi
 
+sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d/'@" "$PGDATA/postgresql.conf" || true
 
 exec "$@"

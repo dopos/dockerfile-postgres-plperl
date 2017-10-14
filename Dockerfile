@@ -31,6 +31,5 @@ RUN mkdir -p /opt/shared
 VOLUME /opt/shared
 
 # /opt/conf.d contains additional server configs
-RUN sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d/'@" "$PGDATA/postgresql.conf"
 RUN mkdir /opt/conf.d
 VOLUME /opt/conf.d
