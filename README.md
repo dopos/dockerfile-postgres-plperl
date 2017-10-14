@@ -23,7 +23,7 @@ Alpine 3.6 + Postgresql 9.6 packages (including plperl)
 
 ## Usage
 
-See [docker-compose.inc.yml]()
+See [docker-compose.inc.yml](https://github.com/dopos/dcape/blob/master/docker-compose.inc.yml)
 
 ## License
 
