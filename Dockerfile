@@ -1,29 +1,18 @@
-FROM alpine:3.6
+#FROM alpine:3.6
+#FROM debian:jessie
+FROM postgres:9.6
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 
-ENV DOCKERFILE_VERSION  171014
+ENV DOCKERFILE_VERSION  171015
 
-ENV PG_MAJOR 9.6
-
-RUN apk --update add --no-cache \
+RUN apt-get update && apt-get install -y \
     bash gawk diffutils \
-    postgresql postgresql-client \
-    postgresql-contrib postgresql-plperl \
-    tzdata su-exec
+    postgresql-plperl-$PG_MAJOR=$PG_VERSION \
+    && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8 \
+    && rm -rf /var/lib/apt/lists/*
 
-ENV PGDATA /var/lib/postgresql/data
-VOLUME /var/lib/postgresql/data
-
-RUN mkdir /docker-entrypoint-initdb.d
 VOLUME /docker-entrypoint-initdb.d
-
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
-ENTRYPOINT ["docker-entrypoint.sh"]
-
-EXPOSE 5432
-CMD ["postgres"]
 
 # /opt/shared will be copied into /usr/share/postgresql on start or by shared-sync.sh call
 COPY shared-sync.sh /usr/local/bin/
@@ -33,3 +22,9 @@ VOLUME /opt/shared
 # /opt/conf.d contains additional server configs
 RUN mkdir /opt/conf.d
 VOLUME /opt/conf.d
+
+# Patch docker-entrypoint.sh
+RUN sed -i 's%\(exec su-exec postgres "$BASH_SOURCE" "$@"\)%shared-sync.sh\n\t\1%' \
+  /usr/local/bin/docker-entrypoint.sh
+RUN sed -i 's%\(exec "$@"\)%sed -i "s@#include_dir = '"'"'conf.d'"'"'@include_dir = '"'"'/opt/conf.d'"'"'@" "$PGDATA/postgresql.conf" || true\n\1%' \
+  /usr/local/bin/docker-entrypoint.sh

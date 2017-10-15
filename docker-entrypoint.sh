@@ -44,9 +44,9 @@ if [ "$1" = 'postgres' ] && [ "$(id -u)" = '0' ]; then
 		chmod 700 "$POSTGRES_INITDB_XLOGDIR"
 	fi
 
-	# sync /opt/shared -> /usr/share/postgresql
+	xx
 	shared-sync.sh
-
+	shared-sync.sh
 	exec su-exec postgres "$BASH_SOURCE" "$@"
 fi
 
@@ -145,6 +145,6 @@ if [ "$1" = 'postgres' ]; then
 	fi
 fi
 
-sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d/'@" "$PGDATA/postgresql.conf" || true
-
+shared-sync.sh
+sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d'@" "$PGDATA/postgresql.conf" || true
 exec "$@"

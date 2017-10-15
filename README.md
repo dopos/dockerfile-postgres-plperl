@@ -11,19 +11,25 @@
 [5]: https://img.shields.io/badge/license-MIT-blue.svg
 [6]: LICENSE
 
-Alpine 3.6 + Postgresql 9.6 packages (including plperl)
+Postgresql 9.6 oficial image + plperl, bash, gawk, diffutils
 
 [Docker image](https://store.docker.com/community/images/dopos/postgresql) built by Docker Cloud service.
 
 ## Addons
 
-* [docker-entrypoint.sh](https://github.com/docker-library/postgres/blob/master/9.6/alpine/docker-entrypoint.sh) from official postgresql image
 * [shared-sync.sh](shared-sync.sh) for copying /opt/shared into /usr/share/postgresql on start or by direct call
 * /opt/conf.d for additional server configs
 
 ## Usage
 
 See [docker-compose.inc.yml](https://github.com/dopos/dcape/blob/master/docker-compose.inc.yml)
+
+## Alpine note
+
+Alpine linux does not used as base OS because it's v3.6 based on musl 1.1.16 and musl wont support LC_COLLATE up to 1.2.0.
+Here is point from [musl Roadmap](http://wiki.musl-libc.org/wiki/Roadmap) for 1.2.0:
+
+* LC_COLLATE support for collation orders other than simple codepoint order
 
 ## License
 
