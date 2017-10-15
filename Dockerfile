@@ -1,5 +1,3 @@
-#FROM alpine:3.6
-#FROM debian:jessie
 FROM postgres:9.6
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
@@ -7,7 +5,7 @@ MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 ENV DOCKERFILE_VERSION  171015
 
 RUN apt-get update && apt-get install -y \
-    bash gawk diffutils \
+    gawk \
     postgresql-plperl-$PG_MAJOR=$PG_VERSION \
     && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
