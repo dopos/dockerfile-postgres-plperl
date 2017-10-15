@@ -24,7 +24,7 @@ RUN mkdir /opt/conf.d
 VOLUME /opt/conf.d
 
 # Patch docker-entrypoint.sh
-RUN sed -i 's%\(exec su-exec postgres "$BASH_SOURCE" "$@"\)%shared-sync.sh\n\t\1%' \
+RUN sed -i 's%\(exec gosu postgres "$BASH_SOURCE" "$@"\)%shared-sync.sh\n\t\1%' \
   /usr/local/bin/docker-entrypoint.sh
 RUN sed -i 's%\(exec "$@"\)%sed -i "s@#include_dir = '"'"'conf.d'"'"'@include_dir = '"'"'/opt/conf.d'"'"'@" "$PGDATA/postgresql.conf" || true\n\1%' \
   /usr/local/bin/docker-entrypoint.sh
