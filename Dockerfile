@@ -1,4 +1,4 @@
-FROM postgres:9.6.8
+FROM postgres:9.6.10
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 
