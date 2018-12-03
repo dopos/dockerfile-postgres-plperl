@@ -146,5 +146,5 @@ if [ "$1" = 'postgres' ]; then
 fi
 
 shared-sync.sh
-sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d' #loading a configuration from a volume in the host@" "$PGDATA/postgresql.conf" || true
+sed -i "s@#include_dir = 'conf.d'@include_dir = '/opt/conf.d'@" "$PGDATA/postgresql.conf" || true
 exec "$@"
