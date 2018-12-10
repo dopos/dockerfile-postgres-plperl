@@ -1,4 +1,4 @@
-FROM postgres:11.1
+FROM postgres:9.6.11
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 
