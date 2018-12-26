@@ -17,8 +17,9 @@
 
 ## Addons
 
-* [shared-sync.sh](shared-sync.sh) for copying /opt/shared into /usr/share/postgresql on start or by direct call
-* /opt/conf.d for additional server configs
+* `/initdb.d` volume for persistent data used on container start
+* `INITDB_DIR` (=/initdb.d) ENV variable for volume path change
+* `initdb.sh` script for running all of `$INITDB_DIR/*.sh` scripts on container start 
 
 ## Usage
 
