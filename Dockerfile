@@ -2,7 +2,7 @@ FROM postgres:11.2
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 
-ENV DOCKERFILE_VERSION  220319
+ENV DOCKERFILE_VERSION  190322
 
 RUN apt-get update && apt-get install -y \
     gawk \
