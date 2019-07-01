@@ -1,8 +1,8 @@
-FROM postgres:11.2
+FROM postgres:11.4
 
 MAINTAINER Alexey Kovrizhkin <lekovr+dopos@gmail.com>
 
-ENV DOCKERFILE_VERSION  190322
+ENV DOCKERFILE_VERSION  190701
 
 RUN apt-get update && apt-get install -y \
     gawk \

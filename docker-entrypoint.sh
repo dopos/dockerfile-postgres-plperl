@@ -43,10 +43,6 @@ if [ "$1" = 'postgres' ] && [ "$(id -u)" = '0' ]; then
 		chown -R postgres "$POSTGRES_INITDB_XLOGDIR"
 		chmod 700 "$POSTGRES_INITDB_XLOGDIR"
 	fi
-
-	xx
-	shared-sync.sh
-	shared-sync.sh
 	exec su-exec postgres "$BASH_SOURCE" "$@"
 fi
 
