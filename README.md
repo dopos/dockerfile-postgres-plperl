@@ -11,7 +11,7 @@
 [5]: https://img.shields.io/badge/license-MIT-blue.svg
 [6]: LICENSE
 
-[Postgresql 11.2 official image](https://hub.docker.com/_/postgres/) + plperl, gawk
+[Postgresql 11.4 official image](https://hub.docker.com/_/postgres/) + plperl, gawk
 
 [Docker image](https://store.docker.com/community/images/dopos/postgresql) built by Docker Cloud service.
 
