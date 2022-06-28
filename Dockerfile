@@ -6,7 +6,7 @@ ENV DOCKERFILE_VERSION  190701
 
 RUN apt-get update && apt-get install -y \
     gawk \
-    postgresql-plperl-$PG_MAJOR=$PG_VERSION \
+    postgresql-plperl-11 \
     && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
